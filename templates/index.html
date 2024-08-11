@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Background</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
+
+      .container {
+        text-align: center;
+      }
+      input[type="file"] {
+        margin-top: 20px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+      button:hover {
+        columns: #00356e;
+      }
+
+      .result-image {
+        width: 300px;
+      }
+      .download-button {
+        display: flex;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+      }
+      .btn-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Remove Background from image</h1>
+      <form enctype="multipart/form-data" method="POST">
+        <input type="file" name="image" accept="image/*" required />
+        <button type="submit">Remove Background</button>
+      </form>
+
+      {% if image_data %}
+
+      <img
+        src="data:image/png;base64, {{image_data}}"
+        alt="Processed Image"
+        class="result-image"
+      />
+
+      <div class="btn-wrap">
+        <a
+          href="data:image/png;base64, {{image_data}}"
+          download="removed_bg.png"
+          class="download-button"
+          >Download Image</a
+        >
+      </div>
+
+      {% endif %}
+    </div>
+  </body>
+</html>
