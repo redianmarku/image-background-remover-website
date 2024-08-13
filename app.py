@@ -20,7 +20,3 @@ def index():
 
         image_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
     return render_template("index.html", image_data = image_data)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
